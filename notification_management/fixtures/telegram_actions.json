@@ -1,0 +1,14 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Telegram Actions",
+  "modified": "2026-06-09 18:28:38.976110",
+  "name": "Submit"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Telegram Actions",
+  "modified": "2026-06-09 18:28:45.024992",
+  "name": "Cancel"
+ }
+]

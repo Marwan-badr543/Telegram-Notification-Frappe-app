@@ -1,0 +1,138 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "{username}.###",
+ "creation": "2026-06-05 17:46:47.967563",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "enabled",
+  "user_info_section",
+  "username",
+  "column_break_owzm",
+  "chat_id",
+  "section_break_yxwd",
+  "tracked_doctype",
+  "event",
+  "column_break_uzvj",
+  "condition",
+  "section_break_tkpa",
+  "message",
+  "telegram_keyboard_section",
+  "telegram_keyboard"
+ ],
+ "fields": [
+  {
+   "fieldname": "user_info_section",
+   "fieldtype": "Section Break",
+   "label": "Recipient Details"
+  },
+  {
+   "fieldname": "username",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Username",
+   "mandatory_depends_on": "eval:doc.chat_id == \"\" || doc.chat_id == null;"
+  },
+  {
+   "fieldname": "column_break_owzm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Enter your Telegram Chat ID.<br>\n<b>If you don't know it:</b><br>\n1. Just enter your <b>Telegram Username</b>.<br>\n2. Send a message to your Telegram Bot, and the system will automatically fetch and save your Chat ID.",
+   "fieldname": "chat_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Chat ID"
+  },
+  {
+   "fieldname": "section_break_yxwd",
+   "fieldtype": "Section Break",
+   "label": "Trigger Settings"
+  },
+  {
+   "fieldname": "tracked_doctype",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Tracked Doctype",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_uzvj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "event",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Event",
+   "options": "After Insert\nOn Update\nOn Submit\nOn Cancel\nOn Trash",
+   "reqd": 1
+  },
+  {
+   "description": "Enter a single-line Python expression to evaluate as a condition (must return True or False).<br><br>\n\n<b>Available Variables:</b><br>\n\u2022 <code>doc.field_name</code> - Any field from the document (e.g., <code>doc.grand_total</code>)<br>\n\u2022 <code>user</code> - Email of the current session user (e.g., <code>manager@example.com</code>)<br>\n\u2022 <code>current_date</code> - System date of today (e.g., <code>2026-06-07</code>)<br><br>\n\n<b>Rules:</b><br>\n\u2022 \u26a0\ufe0f <b>Strict Rule:</b> The condition must be written entirely on <b>one single line</b>.<br>\n\u2022 You can combine multiple rules using <code>and</code> / <code>or</code> operators.<br><br>\n\n<b>Examples:</b><br>\n\u2022 <code>doc.grand_total &gt; 1000</code><br>\n\u2022 <code>user == \"ceo@example.com\" and doc.status == \"Submitted\"</code><br>\n\u2022 <code>doc.delivery_date == current_date</code>",
+   "fieldname": "condition",
+   "fieldtype": "Code",
+   "label": "Condition"
+  },
+  {
+   "description": "Type your message template here using <b>Jinja2 template syntax</b>. You can inject dynamic variables by wrapping them in double curly braces <code>{{ ... }}</code>.<br><br>\n\n<b>Available Variables &amp; Examples:</b><br>\n\u2022 <code>{{ doc.field_name }}</code> - Any field from the current document (e.g., <code>{{ doc.name }}</code>, <code>{{ doc.grand_total }}</code>)<br>\n\u2022 <code>{{ user }}</code> - ID/Email of the current session user (e.g., <code>rami@example.com</code>)<br>\n\u2022 <code>{{ current_date }}</code> - System date of today (e.g., <code>2026-06-09</code>)<br><br>\n<b>Full Example:</b><br>\n<i>\"Hi {{ user }}, Invoice {{ doc.name }} with items [{{ doc.items | map(attribute='item_code') | list | join(', ') }}] has been processed successfully on {{ current_date }}.\"</i>",
+   "fieldname": "message",
+   "fieldtype": "Code",
+   "in_list_view": 1,
+   "label": "Message",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_tkpa",
+   "fieldtype": "Section Break",
+   "label": "Message"
+  },
+  {
+   "fieldname": "telegram_keyboard_section",
+   "fieldtype": "Section Break",
+   "label": "Telegram Keyboard"
+  },
+  {
+   "fieldname": "telegram_keyboard",
+   "fieldtype": "Table",
+   "label": "Telegram Keyboard",
+   "options": "Telegram Keyboard"
+  },
+  {
+   "default": "0",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-06-09 02:22:46.687244",
+ "modified_by": "Administrator",
+ "module": "Notification Management",
+ "name": "Telegram Alert Setting",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

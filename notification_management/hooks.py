@@ -5,6 +5,24 @@ app_description = "Manage all telegram notifications in one place"
 app_email = "marwanbadr514@gmail.com"
 app_license = "mit"
 
+doc_events = {
+    "*": {
+        "after_insert": "notification_management.api.send_notification.dynamic_notify",
+        "on_update": "notification_management.api.send_notification.dynamic_notify",
+        "on_submit": "notification_management.api.send_notification.dynamic_notify",
+        "on_cancel": "notification_management.api.send_notification.dynamic_notify",
+        "on_trash": "notification_management.api.send_notification.dynamic_notify"
+    }
+}
+
+fixtures = [
+    {
+        "doctype": "Telegram Actions",
+        "filters": [["name", "in", ["Submit", "Cancel"]]]
+    }
+]
+
+
 # Apps
 # ------------------
 
