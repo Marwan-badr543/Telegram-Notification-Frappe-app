@@ -1,3 +1,4 @@
+HEAD
 ### Notification Management
 
 Manage all telegram notifications in one place
@@ -39,3 +40,5 @@ This app can use GitHub Actions for CI. The following workflows are configured:
 ### License
 
 mit
+
+# Telegram-Notification-Frappe-app
