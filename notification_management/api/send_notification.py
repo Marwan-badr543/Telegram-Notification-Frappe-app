@@ -200,7 +200,10 @@ class MessageTemplate:
 
 
 
-def send_telegram_notification(bot_token, payload):    
+def send_telegram_notification(bot_token, payload):  
+    print("in send telegram notification ....")  
+    print(f"bot token is {bot_token}")
+    print(f"payload is {payload}")
     url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
     
     payload = payload

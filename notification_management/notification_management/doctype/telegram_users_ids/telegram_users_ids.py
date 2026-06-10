@@ -9,7 +9,7 @@ class TelegramUsersIDs(Document):
 	
 	@staticmethod
 	def check_user_name_exists(username):
-		return frappe.db.exists({"doctype": "Telegram Users IDs", "name": username})
+		return frappe.db.exists("Telegram Users IDs", {"username": username})
 
 	@staticmethod
 	def create_username(username, chat_id, first_name):
@@ -24,5 +24,5 @@ class TelegramUsersIDs(Document):
 
 	@staticmethod
 	def get_chat_id(username):
-		return frappe.db.get_value("Telegram Users IDs", username, "chat_id", as_dict=True)
+		return frappe.db.get_value("Telegram Users IDs", {"username": username}, "chat_id", as_dict=True)
 		

@@ -47,4 +47,15 @@ result = {
 
 data = result.get("callback_query").get("data")
 sep_data = data.split(":")
-print(sep_data[1])
+# print(sep_data[1])
+
+chat_id = result.get("callback_query").get("message").get("chat_id")
+
+my_dict = {
+    "name":'marwan',
+    "prop": {
+        "tall":23,
+        "weight":59
+    }
+}
+print(result.get("callback_query").get("message").get("chat").get("id"))
