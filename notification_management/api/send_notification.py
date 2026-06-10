@@ -201,9 +201,6 @@ class MessageTemplate:
 
 
 def send_telegram_notification(bot_token, payload):  
-    print("in send telegram notification ....")  
-    print(f"bot token is {bot_token}")
-    print(f"payload is {payload}")
     url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
     
     payload = payload
@@ -217,30 +214,3 @@ def send_telegram_notification(bot_token, payload):
         return {"status": "failed", "error": str(e)}
 
 
-
-# @frappe.whitelist(allow_guest=True)
-# def send_telegram_notification(message:str):
-#     bot_token = "8758948322:AAEUsvz91GlcXCTypw7zTjy72KZ8fM9ZnJI"
-#     chat_id = "1131578960"
-    
-#     url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
-    
-#     keyboard = {
-#         "inline_keyboard": [
-#           [
-#                 {"text": "Approve here ✅", "callback_data": "approve_request"},
-#                 {"text": "Reject ❌", "callback_data": "reject_request"}
-#         ]]
-#     }
-#     payload = {
-#         "chat_id": chat_id,
-#         "text": message,
-#         "reply_markup": json.dumps(keyboard)
-#     }
-#     try:
-#         response = requests.post(url, data=payload)
-#         response.raise_for_status() 
-#         return {"status": "success", "response": response.json()}
-#     except requests.exceptions.RequestException as e:
-#         frappe.log_error(message=str(e), title="Telegram Notification Error")
-#         return {"status": "failed", "error": str(e)}        
